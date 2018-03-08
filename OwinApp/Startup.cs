@@ -13,6 +13,7 @@ namespace OwinApp
         {
             app.Use(async (context, next) =>
             {
+                await context.Response.WriteAsync("Hello Owin");
                 await next.Invoke();
             });
         }
