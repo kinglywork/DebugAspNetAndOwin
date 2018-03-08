@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugAspNetWebApiHost", "DebugAspNetWebApiHost\DebugAspNetWebApiHost.csproj", "{97967435-5512-4A77-91F1-1938D4834A27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApiHost", "DebugAspNetWebApiHost\AspNetWebApiHost.csproj", "{97967435-5512-4A77-91F1-1938D4834A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugWebApiAndOwin", "DebugWebApiAndOwin\DebugWebApiAndOwin.csproj", "{3DDD98AC-4791-4DAE-A415-309420B17559}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAndOwin", "DebugWebApiAndOwin\WebApiAndOwin.csproj", "{3DDD98AC-4791-4DAE-A415-309420B17559}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Owin", "Owin", "{FD12D493-4455-400E-B49D-E7F2AFC912CB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OwinLibs", "OwinLibs", "{FD12D493-4455-400E-B49D-E7F2AFC912CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin", "OwinLibs\Microsoft.Owin\Microsoft.Owin.csproj", "{0DB69CAE-B0BC-4688-9467-66B4C1023D3F}"
 EndProject
@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Http.WebHost", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Http.SelfHost", "AspNetStack\System.Web.Http.SelfHost\System.Web.Http.SelfHost.csproj", "{66492E69-CE4C-4FB1-9B1F-88DEE09D06F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugAspNetWebApiSelfHost", "DebugAspNetWebApiSelfHost\DebugAspNetWebApiSelfHost.csproj", "{C979752F-AA5B-45AA-ADFC-B0631FE4A12F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApiSelfHost", "DebugAspNetWebApiSelfHost\AspNetWebApiSelfHost.csproj", "{C979752F-AA5B-45AA-ADFC-B0631FE4A12F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Http.Owin", "AspNetStack\System.Web.Http.Owin\System.Web.Http.Owin.csproj", "{66DD7CD7-C68F-4D0E-9F3D-3B58C49D1467}"
 EndProject
