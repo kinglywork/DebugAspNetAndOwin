@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,20 @@ namespace DebugAspNetWebApiSelfHost
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            appBuilder.Use(async (context, next) =>
+            {
+                Console.WriteLine(@"before enter webapi pipeline");
+                await next.Invoke();
+                Console.WriteLine(@"after go out of webapi pipeline");
+            });
+
             appBuilder.UseWebApi(config);
+
+            appBuilder.Use(async (context, next) =>
+            {
+                Console.WriteLine(@"next middleware of webapi");
+                await next.Invoke();
+            });
         }
     }
 }
