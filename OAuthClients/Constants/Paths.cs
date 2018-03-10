@@ -11,7 +11,7 @@ namespace Constants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:25035";
+        public const string AuthorizationServerBaseAddress = "http://localhost:26035";
 
         /// <summary>
         /// ResourceServer project should run on this URL
