@@ -10,19 +10,22 @@ namespace OAuthServer.Controllers
 {
     public class AccountController : Controller
     {
+        private IAuthenticationManager Authentication => HttpContext.GetOwinContext().Authentication;
+
         public ActionResult Login()
         {
-            var authentication = HttpContext.GetOwinContext().Authentication;
-            if (Request.HttpMethod == "POST")
+            if (Request.HttpMethod != "POST")
             {
-                var isPersistent = !string.IsNullOrEmpty(Request.Form.Get("isPersistent"));
+                return View();
+            }
 
-                if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
-                {
-                    authentication.SignIn(
-                        new AuthenticationProperties { IsPersistent = isPersistent },
-                        new ClaimsIdentity(new[] { new Claim(ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) }, "Application"));
-                }
+            var isPersistent = !string.IsNullOrEmpty(Request.Form.Get("isPersistent"));
+
+            if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
+            {
+                Authentication.SignIn(
+                    new AuthenticationProperties { IsPersistent = isPersistent },
+                    new ClaimsIdentity(new[] { new Claim(ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) }, "Application"));
             }
 
             return View();
@@ -30,35 +33,35 @@ namespace OAuthServer.Controllers
 
         public ActionResult Logout()
         {
+            Authentication.SignOut(new AuthenticationProperties(), "Application");
             return View();
         }
 
         public ActionResult External()
         {
-            var authentication = HttpContext.GetOwinContext().Authentication;
             if (Request.HttpMethod == "POST")
             {
                 foreach (var key in Request.Form.AllKeys)
                 {
-                    if (key.StartsWith("submit.External.") && !string.IsNullOrEmpty(Request.Form.Get(key)))
+                    if (!key.StartsWith("submit.External.") || string.IsNullOrEmpty(Request.Form.Get(key)))
                     {
-                        var authType = key.Substring("submit.External.".Length);
-                        authentication.Challenge(authType);
-                        return new HttpUnauthorizedResult();
+                        continue;
                     }
+                    var authType = key.Substring("submit.External.".Length);
+                    Authentication.Challenge(authType);
+                    return new HttpUnauthorizedResult();
                 }
             }
-            var identity = authentication.AuthenticateAsync("External").Result.Identity;
-            if (identity != null)
+            var identity = Authentication.AuthenticateAsync("External").Result.Identity;
+            if (identity == null)
             {
-                authentication.SignOut("External");
-                authentication.SignIn(
-                    new AuthenticationProperties { IsPersistent = true },
-                    new ClaimsIdentity(identity.Claims, "Application", identity.NameClaimType, identity.RoleClaimType));
-                return Redirect(Request.QueryString["ReturnUrl"]);
+                return View();
             }
-
-            return View();
+            Authentication.SignOut("External");
+            Authentication.SignIn(
+                new AuthenticationProperties { IsPersistent = true },
+                new ClaimsIdentity(identity.Claims, "Application", identity.NameClaimType, identity.RoleClaimType));
+            return Redirect(Request.QueryString["ReturnUrl"]);
         }
     }
 }

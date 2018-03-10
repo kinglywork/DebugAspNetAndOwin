@@ -3,7 +3,7 @@
 @{
     var authentication = Context.GetOwinContext().Authentication;
     var ticket = authentication.AuthenticateAsync("Application").Result;
-    var identity = ticket != null ? ticket.Identity : null;
+    var identity = ticket?.Identity;
     var scopes = (Request.QueryString.Get("scope") ?? "").Split(' ');
 }
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <h1>Authorization Server</h1>
     <h2>OAuth2 Authorize</h2>
     <form method="POST">
-        <p>Hello, @identity.Name</p>
+        <p>Hello, @identity?.Name</p>
         <p>A third party application want to do the following on your behalf:</p>
         <ul>
             @foreach (var scope in scopes)

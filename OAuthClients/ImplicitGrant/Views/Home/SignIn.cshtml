@@ -19,14 +19,13 @@
             }
 
             function parseQueryString(queryString) {
-                var data = {},
-                    pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
+                var data = {}, pair, separatorIndex, escapedKey, escapedValue, key, value;
 
                 if (queryString === null) {
                     return data;
                 }
 
-                pairs = queryString.split("&");
+                var pairs = queryString.split("&");
 
                 for (var i = 0; i < pairs.length; i++) {
                     pair = pairs[i];
