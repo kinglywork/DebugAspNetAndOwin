@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -35,9 +36,21 @@ namespace OAuthServer
                 LogoutPath = new PathString("/Account/Logout")
             });
 
-            app.Use(async (context, next) =>
+            // Enable External Sign In Cookie
+            app.SetDefaultSignInAsAuthenticationType("External");
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                await next.Invoke();
+                AuthenticationType = "External",
+                AuthenticationMode = AuthenticationMode.Passive,
+                CookieName = CookieAuthenticationDefaults.CookiePrefix + "External",
+                ExpireTimeSpan = TimeSpan.FromMinutes(5),
+            });
+
+            // Enable google authentication
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "952786513228-1hs37dhf39u8kethehoirprp0r38al53.apps.googleusercontent.com",
+                ClientSecret = "qw9KDZEWouhoK4xT6jjoeoBf"
             });
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
