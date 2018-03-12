@@ -49,8 +49,8 @@ namespace OAuthServer
             // Enable google authentication
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "952786513228-1hs37dhf39u8kethehoirprp0r38al53.apps.googleusercontent.com",
-                ClientSecret = "qw9KDZEWouhoK4xT6jjoeoBf"
+                ClientId = "1234.apps.googleusercontent.com",
+                ClientSecret = "abcdefghijklmnopqrstuvwxyz"
             });
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
