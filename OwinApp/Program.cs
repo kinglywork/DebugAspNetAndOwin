@@ -17,7 +17,7 @@ namespace OwinApp
             };
             using (WebApp.Start<Startup>(startOpts))
             {
-                Console.WriteLine("Server run at " + url + " , press Enter to exit.");
+                Console.WriteLine($"Server run at {url} , press Enter to exit.");
                 Console.ReadLine();
             }
         }

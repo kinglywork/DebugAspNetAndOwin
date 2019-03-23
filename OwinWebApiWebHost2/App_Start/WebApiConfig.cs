@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace OwinWebApiWebHost2
+namespace OwinWebApiWebHostWithoutWebApiApplication
 {
     public static class WebApiConfig
     {

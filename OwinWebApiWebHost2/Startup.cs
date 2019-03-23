@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Microsoft.Owin;
 using Owin;
-using OwinWebApiWebHost2;
+using OwinWebApiWebHostWithoutWebApiApplication;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace OwinWebApiWebHost2
+namespace OwinWebApiWebHostWithoutWebApiApplication
 {
     public class Startup
     {

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 
-namespace OwinWebApiWebHost2.Controllers
+namespace OwinWebApiWebHostWithoutWebApiApplication.Controllers
 {
     public class ValueController : ApiController
     {

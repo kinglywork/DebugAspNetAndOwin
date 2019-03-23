@@ -7,8 +7,8 @@
     <ProjectGuid>{C979752F-AA5B-45AA-ADFC-B0631FE4A12F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DebugAspNetWebApiSelfHost</RootNamespace>
-    <AssemblyName>DebugAspNetWebApiSelfHost</AssemblyName>
+    <RootNamespace>OwinWebApiSelfHost</RootNamespace>
+    <AssemblyName>OwinWebApiSelfHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
