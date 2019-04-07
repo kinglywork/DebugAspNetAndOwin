@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace DebugAspNetWebApiHost.Controllers
 {
+    [DemoAuthorization]
     public class ValueController : ApiController
     {
         public string Get()
